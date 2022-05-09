@@ -1,1 +1,1 @@
-TRG skeleton for wrappers
+HandBrakeCLI wrapper
