@@ -53,14 +53,6 @@ public class SubtitleOptions {
             "                           forced.")
     private String subtitleForced;
 
-    @CommandLine.Option(names = "--output", description = "'Burn' the selected subtitle into the video\n" +
-            "                           track. If 'subtitle' is omitted, the first\n" +
-            "                           track is burned. 'subtitle' is an index into\n" +
-            "                           the subtitle list specified with '--subtitle'\n" +
-            "                           or 'native' to burn the subtitle track that may\n" +
-            "                           be added by the 'native-language' option.")
-    private String output;
-
     @CommandLine.Option(names = "--subtitle-default", description = "Flag the selected subtitle as the default\n" +
             "                           subtitle to be displayed upon playback.  Setting\n" +
             "                           no default means no subtitle will be displayed\n" +

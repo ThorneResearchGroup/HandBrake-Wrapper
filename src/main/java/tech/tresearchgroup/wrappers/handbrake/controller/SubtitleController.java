@@ -30,10 +30,6 @@ public class SubtitleController {
             optionsList.add("--subtitle-forced");
             optionsList.add(subtitleOptions.getSubtitleForced());
         }
-        if(subtitleOptions.getOutput() != null) {
-            optionsList.add("--output");
-            optionsList.add(subtitleOptions.getOutput());
-        }
         if(subtitleOptions.getSubtitleDefault() != null) {
             optionsList.add("--subtitle-default");
             optionsList.add(subtitleOptions.getSubtitleDefault());

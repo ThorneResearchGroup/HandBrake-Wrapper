@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+@CommandLine.Command(name = "HandBrakeCLI", mixinStandardHelpOptions = true,
+        description = "TRG FPCalc wrapper")
 public class Main implements Callable<Integer> {
     @CommandLine.ArgGroup
     private AudioOptions audioOptions;
@@ -40,15 +42,36 @@ public class Main implements Callable<Integer> {
     public Integer call() {
         List<String> options = new ArrayList<>();
         options.add("HandBrakeCLI");
-        options.addAll(AudioController.getOptions(audioOptions));
-        options.addAll(DestinationController.getOptions(destinationOptions));
-        options.addAll(FilterController.getOptions(filterOptions));
-        options.addAll(GeneralController.getOptions(generalOptions));
-        options.addAll(PictureController.getOptions(pictureOptions));
-        options.addAll(SourceController.getOptions(sourceOptions));
-        options.addAll(SubtitleController.getOptions(subtitleOptions));
-        options.addAll(VideoController.getOptions(videoOptions));
+        if(audioOptions != null) {
+            options.addAll(AudioController.getOptions(audioOptions));
+        }
+        if(destinationOptions != null) {
+            options.addAll(DestinationController.getOptions(destinationOptions));
+        }
+        if(filterOptions != null) {
+            options.addAll(FilterController.getOptions(filterOptions));
+        }
+        if(generalOptions != null) {
+            options.addAll(GeneralController.getOptions(generalOptions));
+        }
+        if(pictureOptions != null) {
+            options.addAll(PictureController.getOptions(pictureOptions));
+        }
+        if(sourceOptions != null) {
+            options.addAll(SourceController.getOptions(sourceOptions));
+        }
+        if(subtitleOptions != null) {
+            options.addAll(SubtitleController.getOptions(subtitleOptions));
+        }
+        if(videoOptions != null) {
+            options.addAll(VideoController.getOptions(videoOptions));
+        }
         return execute(options);
+    }
+
+    public static void main(String... args) {
+        int exitCode = new CommandLine(new Main()).execute(args);
+        System.exit(exitCode);
     }
 
     public static int execute(List<String> options) {
